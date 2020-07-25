@@ -41,6 +41,7 @@ export default {
     reset: 'reset',
     hr: 'horizontal rule',
     undo: 'undo',
+    code: 'code',
     'line height': 'line height',
     'exceed size limit': 'exceed size limit'
 }

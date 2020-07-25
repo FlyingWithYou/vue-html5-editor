@@ -41,6 +41,7 @@ export default {
     reset: '重置',
     hr: '分隔线',
     undo: '撤消',
+    code: '源码',
     'line height': '行高',
     'exceed size limit': '超出大小限制'
 }

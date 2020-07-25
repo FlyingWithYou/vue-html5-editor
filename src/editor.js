@@ -35,6 +35,7 @@ export default {
             // locale: {},
             // modules:{},
             fullScreen: false,
+            showCode: false,
             dashboard: null
         }
     },
@@ -42,7 +43,8 @@ export default {
         content(val) {
             const content = this.$refs.content.innerHTML
             if (val !== content) {
-                this.$refs.content.innerHTML = val
+                this.$refs.content.innerHTML = val;
+                this.$refs.contentCode.value = val;
             }
             this.$emit('update:content', val)
         },
@@ -83,6 +85,9 @@ export default {
         enableFullScreen(){
             this.fullScreen = true
         },
+        toggleShowCode() {
+            this.showCode = !this.showCode
+        },
         exitFullScreen(){
             this.fullScreen = false
         },
@@ -103,6 +108,11 @@ export default {
         getCurrentRange(){
             return this.range
         },
+        saveCurrentCodeRange() {
+           const contentCode = this.$refs.contentCode;
+           this.range = contentCode.value;
+           this.$emit('change', contentCode.value)
+        },
         saveCurrentRange(){
             const selection = window.getSelection ? window.getSelection() : document.getSelection()
             if (!selection.rangeCount) {
@@ -121,6 +131,8 @@ export default {
                     break
                 }
             }
+            const contentCode = this.$refs.contentCode;
+            contentCode.value = this.content;
         },
         restoreSelection(){
             const selection = window.getSelection ? window.getSelection() : document.getSelection()
@@ -158,6 +170,26 @@ export default {
     mounted(){
         const content = this.$refs.content
         content.innerHTML = this.content
+        
+        const contentCode = this.$refs.contentCode
+        contentCode.value = this.content
+
+        contentCode.addEventListener('keyup', () => {
+            this.$emit('change', contentCode.value)
+            this.saveCurrentCodeRange();
+        })
+        contentCode.addEventListener('mouseout', (e) => {
+            if (e.target === contentCode) {
+                this.saveCurrentCodeRange()
+            }
+        }, false)
+        this.touchCodeHandler = (e) => {
+            if (contentCode.contains(e.target)) {
+                this.saveCurrentCodeRange()
+            }
+        }
+        window.addEventListener('touchend', this.touchCodeHandler, false)
+
         content.addEventListener('mouseup', this.saveCurrentRange, false)
         content.addEventListener('keyup', () => {
             this.$emit('change', content.innerHTML)
@@ -173,7 +205,6 @@ export default {
                 this.saveCurrentRange()
             }
         }
-
         window.addEventListener('touchend', this.touchHandler, false)
     },
     updated(){

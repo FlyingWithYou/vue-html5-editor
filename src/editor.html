@@ -16,7 +16,8 @@
             </keep-alive>
         </div>
     </div>
-    <div class="content" ref="content" :style="contentStyle"
+    <div v-show='!showCode' class="content" ref="content" :style="contentStyle"
          contenteditable @click="toggleDashboard(dashboard)">
     </div>
+    <textarea v-show='showCode' class="content" :style="contentStyle" style="width: 100%; border: none; resize: none;" ref="contentCode" row="20" cols="60"  tabindex="0" role="textbox" aria-multiline="true"></textarea>
 </div>
