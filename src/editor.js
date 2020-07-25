@@ -43,8 +43,8 @@ export default {
         content(val) {
             const content = this.$refs.content.innerHTML
             if (val !== content) {
-                this.$refs.content.innerHTML = val;
-                this.$refs.contentCode.value = val;
+                this.$refs.content.innerHTML = val
+                this.$refs.contentCode.value = val
             }
             this.$emit('update:content', val)
         },
@@ -109,8 +109,8 @@ export default {
             return this.range
         },
         saveCurrentCodeRange() {
-           const contentCode = this.$refs.contentCode;
-           this.range = contentCode.value;
+           const contentCode = this.$refs.contentCode
+           this.range = contentCode.value
            this.$emit('change', contentCode.value)
         },
         saveCurrentRange(){
@@ -131,8 +131,8 @@ export default {
                     break
                 }
             }
-            const contentCode = this.$refs.contentCode;
-            contentCode.value = this.content;
+            const contentCode = this.$refs.contentCode
+            contentCode.value = this.content
         },
         restoreSelection(){
             const selection = window.getSelection ? window.getSelection() : document.getSelection()
@@ -170,13 +170,13 @@ export default {
     mounted(){
         const content = this.$refs.content
         content.innerHTML = this.content
-        
+
         const contentCode = this.$refs.contentCode
         contentCode.value = this.content
 
         contentCode.addEventListener('keyup', () => {
             this.$emit('change', contentCode.value)
-            this.saveCurrentCodeRange();
+            this.saveCurrentCodeRange()
         })
         contentCode.addEventListener('mouseout', (e) => {
             if (e.target === contentCode) {

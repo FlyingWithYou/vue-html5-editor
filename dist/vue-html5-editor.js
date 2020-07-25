@@ -1,7 +1,7 @@
 /**
- * Vue-html5-editor 1.1.0
+ * Vue-html5-editor 1.1.1
  * https://github.com/PeakTai/vue-html5-editor
- * build at Sat Jul 25 2020 17:26:42 GMT+0800 (GMT+08:00)
+ * build at Sat Jul 25 2020 17:37:23 GMT+0800 (GMT+08:00)
  */
 
 (function (global, factory) {
@@ -86,6 +86,9 @@ var polyfill = function () {
 
 var template = "<div> <button type=\"button\" @click=\"$parent.execCommand('justifyLeft')\"> {{$parent.locale[\"left justify\"]}} </button> <button type=\"button\" @click=\"$parent.execCommand('justifyCenter')\"> {{$parent.locale[\"center justify\"]}} </button> <button type=\"button\" @click=\"$parent.execCommand('justifyRight')\"> {{$parent.locale[\"right justify\"]}} </button> </div>";
 
+/**
+ * Created by peak on 2017/2/10.
+ */
 var dashboard = {
     template: template
 };
@@ -105,6 +108,9 @@ var template$1 = "<div> <div> <label> <input type=\"radio\" value=\"foreColor\" 
 
 __$styleInject(".vue-html5-editor .color-card{margin:2px;width:30px;height:30px;float:left;cursor:pointer}",undefined);
 
+/**
+ * Created by peak on 2017/2/10.
+ */
 var dashboard$1 = {
     template: template$1,
     data: function data(){
@@ -127,6 +133,10 @@ var dashboard$1 = {
     }
 };
 
+/**
+ * fore color and back color
+ * Created by peak on 16/8/18.
+ */
 var color = {
     name: 'color',
     icon: 'fa fa-paint-brush',
@@ -179,6 +189,9 @@ var Command = {
     UNLINK: 'unlink'
 };
 
+/**
+ * Created by peak on 2017/2/10.
+ */
 var dashboard$2 = {
     template: template$2,
     data: function data(){
@@ -233,6 +246,10 @@ var dashboard$2 = {
     }
 };
 
+/**
+ * font name and font size
+ * Created by peak on 16/8/18.
+ */
 var font = {
     name: 'font',
     icon: 'fa fa-font',
@@ -293,6 +310,9 @@ e.exports=window.lrz;}])});
 
 var template$3 = "<div> <div v-show=\"upload.status=='ready'\"> <input type=\"text\" v-model=\"imageUrl\" maxlength=\"255\" :placeholder=\"$parent.locale['please enter a url']\"> <button type=\"button\" @click=\"insertImageUrl\">{{$parent.locale.save}}</button> <input type=\"file\" ref=\"file\" style=\"display: none !important;\" @change=\"process\" accept=\"image/png,image/jpeg,image/gif,image/jpg\"> <button type=\"button\" @click=\"pick\">{{$parent.locale.upload}}</button> </div> <div v-if=\"upload.status=='progress'\"> {{$parent.locale.progress}}:{{upload.progressComputable ? $parent.locale.unknown : upload.complete}} </div> <div v-if=\"upload.status=='success'\"> {{$parent.locale[\"please wait\"]}}... </div> <div v-if=\"upload.status=='error'\"> {{$parent.locale.error}}:{{upload.errorMsg}} <button type=\"button\" @click=\"reset\">{{$parent.locale.reset}}</button> </div> <div v-if=\"upload.status=='abort'\"> {{$parent.locale.upload}}&nbsp;{{$parent.locale.abort}}, <button type=\"button\" @click=\"reset\">{{$parent.locale.reset}}</button> </div> </div> ";
 
+/**
+ * Created by peak on 2017/2/10.
+ */
 var dashboard$3 = {
     template: template$3,
     data: function data() {
@@ -480,6 +500,10 @@ var dashboard$3 = {
     }
 };
 
+/**
+ * insert image
+ * Created by peak on 16/8/18.
+ */
 var image = {
     name: 'image',
     icon: 'fa fa-file-image-o',
@@ -513,11 +537,14 @@ var image = {
 
 var template$4 = "<div> <h3 style=\"text-align: center\">Vue-html5-editor&nbsp;{{version}}</h3> <p style=\"text-align: center\"> repository: <a href=\"https://github.com/PeakTai/vue-html5-editor\" target=\"_blank\"> https://github.com/PeakTai/vue-html5-editor </a> </p> </div> ";
 
+/**
+ * Created by peak on 2017/2/10.
+ */
 var dashboard$4 = {
     template: template$4,
     data: function data(){
         return {
-            version: "1.1.0"
+            version: "1.1.1"
         }
     }
 };
@@ -573,6 +600,9 @@ var link = {
 
 var template$6 = "<div> <button type=\"button\" @click=\"$parent.execCommand('insertOrderedList')\"> {{$parent.locale[\"ordered list\"]}} </button> <button type=\"button\" @click=\"$parent.execCommand('insertUnorderedList')\"> {{$parent.locale[\"unordered list\"]}} </button> </div>";
 
+/**
+ * Created by peak on 2017/2/10.
+ */
 var dashboard$6 = {
     template: template$6
 };
@@ -590,6 +620,9 @@ var list = {
 
 var template$7 = "<form @submit.prevent=\"insertTable\"> <label> {{$parent.locale[\"row count\"]}} <input type=\"number\" style=\"width: 60px\" maxlength=\"2\" min=\"2\" max=\"10\" v-model=\"rows\"> </label> <label> {{$parent.locale[\"column count\"]}} <input type=\"number\" style=\"width: 60px\" maxlength=\"2\" min=\"2\" max=\"10\" v-model=\"cols\"> </label> <button type=\"submit\">{{$parent.locale.save}}</button> </form>";
 
+/**
+ * Created by peak on 2017/2/10.
+ */
 var dashboard$7 = {
     template: template$7,
     data: function data(){
@@ -623,6 +656,10 @@ var dashboard$7 = {
     }
 };
 
+/**
+ * insert table
+ * Created by peak on 16/8/18.
+ */
 var table = {
     // can not named table
     // dashboard.html will add to editor as a child component and named as module name
@@ -699,6 +736,10 @@ var code = {
     // dashboard
 };
 
+/**
+ * build-in moduls
+ * Created by peak on 2016/11/1.
+ */
 var buildInModules = [
     text,
     color,
@@ -851,6 +892,7 @@ var isInlineElement = function (node) {
     return inlineNodeNames.includes(node.nodeName)
 };
 
+// for IE 11
 if (!Text.prototype.contains) {
     Text.prototype.contains = function contains(otherNode) {
         return this === otherNode
@@ -1331,7 +1373,7 @@ var editor = {
 
         var content = this.$refs.content;
         content.innerHTML = this.content;
-        
+
         var contentCode = this.$refs.contentCode;
         contentCode.value = this.content;
 
