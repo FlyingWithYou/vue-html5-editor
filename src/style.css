@@ -58,6 +58,9 @@
           display: inline-block;
           vertical-align: middle;
         }
+        & .active-code {
+          color: #2973b7;
+        }
       }
     }
 

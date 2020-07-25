@@ -25,5 +25,5 @@ subscript   |   Y   |   Y   |   Y
 superscript |   Y   |   Y   |   Y
 undo    |   Y   |   Y   |   Y
 unlink  |   Y   |   Y   |   Y
-
+code | Y | Y | Y |
 

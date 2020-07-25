@@ -97,6 +97,9 @@ export default {
         toggleDashboard(dashboard){
             this.dashboard = this.dashboard === dashboard ? null : dashboard
         },
+        hiddenDashbord(){
+            this.dashboard = null
+        },
         execCommand(command, arg){
             this.restoreSelection()
             if (this.range) {
@@ -151,12 +154,22 @@ export default {
             }
         },
         activeModule(module){
+            if (module.name !== 'code') {
+                this.showCode = false
+            }
             if (typeof module.handler === 'function') {
                 module.handler(this)
                 return
             }
             if (module.hasDashboard) {
                 this.toggleDashboard(`dashboard-${module.name}`)
+            }
+        },
+        activeCode(module) {
+            if(module.name == 'code' && this.showCode == true) {
+                return true;
+            } else {
+                false;
             }
         }
     },
