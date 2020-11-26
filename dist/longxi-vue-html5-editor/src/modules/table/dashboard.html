@@ -1,0 +1,10 @@
+<div class="edit-select-card">
+  <table>
+    <tbody>
+      <tr v-for="(tr, y) in 10" :key="'tr' + y" style="user-select: none;">
+        <td v-for="(td, x) in 10" :key="'td' + x" @click="insertTable()" @mouseover="hoverTd(x, y)" style="user-select: none;">
+          <div :class="{'table-card-selected': y < rows && x < cols}" class="table-card"></div>
+        </td>
+      </tr>
+    </tbody>
+</div>

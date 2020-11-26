@@ -9,9 +9,9 @@ export default {
     icon: 'fa fa-file-code-o ',
     i18n: 'code',
     handler (editor) {
-        if(!editor.showCode) {
-            editor.hiddenDashbord();
-        }
+        // if(!editor.showCode) {
+        //     editor.hiddenDashbord();
+        // }
         editor.toggleShowCode();
         // console.log(editor.content, 'code', editor);
     }
